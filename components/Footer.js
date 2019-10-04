@@ -83,7 +83,7 @@ export default class Footer extends React.Component {
                   </span>
                 </li>
                 <li>
-                  <span>تلفن: 88878583</span>
+                  <span>تلفن: 88878583-021</span>
                 </li>
               </ul>
               <h5 className="footer-title">عضویت در خبر نامه</h5>
