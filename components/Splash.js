@@ -21,7 +21,7 @@ export default class Splash extends React.Component {
             this.player = player;
           }}
         >
-          <source src="/static/videos/cover3.mp4" />
+          <source src="/static/videos/cover.mp4" />
           <BigPlayButton position="center" className="d-none" />
           <ControlBar disableDefaultControls className="d-none" />
         </Player>

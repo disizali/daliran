@@ -45,7 +45,7 @@ export default class NavbarClass extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="white shadow" light expand="md" className="fixed-top">
+        <Navbar color="white shadow" light expand="lg" className="fixed-top">
           <Container>
             <NavbarBrand href="/">
               <img src="/static/images/logo.png" className="logo-image" />
@@ -74,7 +74,11 @@ export default class NavbarClass extends React.Component {
                     <NavLink href="/navy">ناوگان هوایی</NavLink>
                   </Link>
                 </NavItem>
-
+                <NavItem>
+                  <Link href="/employment">
+                    <NavLink href="/employment">فرم همکاری</NavLink>
+                  </Link>
+                </NavItem>
                 <NavItem>
                   <Link href="/news">
                     <NavLink href="/news">اخبار</NavLink>
@@ -85,7 +89,7 @@ export default class NavbarClass extends React.Component {
                     <NavLink href="/contact">تماس با ما</NavLink>
                   </Link>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink>
                     <div
                       className="search-bar p-1 ml-3"
@@ -101,7 +105,7 @@ export default class NavbarClass extends React.Component {
                       onKeyPress={this.search}
                     />
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
               </Nav>
             </Collapse>
           </Container>

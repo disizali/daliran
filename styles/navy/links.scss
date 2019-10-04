@@ -1,16 +1,40 @@
-.navy-links {
-  width: 100%;
-  background: red;
-}
-.navy-links-row {
-  height: 100%;
+.navy-link-item {
+  min-height: 250px;
 }
 
-.navy-link-1 {
+@mixin navyLinkAnchors {
+  position: relative;
+  color: white;
+  width: 100%;
+  text-align: right;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.2em;
+  transition: 1s all;
+  &:hover{
+    text-decoration: none;
+    margin-right: 5px;
+  }
+}
+
+@mixin navyLinkCommons {
+  background-size: 100% 100%;
+  transition: all 1s;
+  display: flex;
+  align-items: flex-end;
+  &:hover {
+    background-size: 102% 102%;
+  }
+}
+
+.navy-link-item-1 {
   background: #cea158;
   height: 100%;
   width: 100%;
-  font-size: 1.3em;
+  font-size: 1.2em;
+  text-align: right;
+  display: flex;
+  align-items: flex-end;
   ul {
     list-style: none;
     li {
@@ -21,7 +45,8 @@
         transition: all 0.3s;
         border-radius: 100px;
         &:hover {
-          color: #f1e3cd;
+          text-shadow: 0 0 10px #f1e3cd;
+          margin-right: 5px;
         }
       }
       &::before {
@@ -33,33 +58,19 @@
     }
   }
 }
-@mixin navyLinkAnchors {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  color: white;
-  text-decoration: none;
-  font-size: 1.5em;
-}
-@mixin navyLinkCommons {
-  background-size: 100% 100%;
-  transition: all 1s;
-  &:hover {
-    background-size: 102% 102%;
-  }
-}
-.navy-link-2 {
+.navy-link-item-2 {
   background: linear-gradient(to top, #1e3964bb, rgba(0, 0, 0, 0)),
     url(/static/images/classes.png) no-repeat;
   @include navyLinkCommons();
   a {
+    width: 100%;
+    text-align: right;
     @include navyLinkAnchors();
   }
 }
-.navy-link-3 {
+.navy-link-item-3 {
   background: linear-gradient(to top, #1e3964bb, rgba(0, 0, 0, 0)),
     url(/static/images/brochure.png) no-repeat;
-  background-size: cover;
   @include navyLinkCommons();
   a {
     @include navyLinkAnchors();

@@ -17,6 +17,11 @@ class Index extends React.Component {
         <Description />
         <Mountain />
         <Links />
+        <style jsx>{`
+          body {
+            width: 100vw;
+          }
+        `}</style>
       </Layout>
     );
   }

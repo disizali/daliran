@@ -14,7 +14,7 @@ export default class Navy extends React.Component {
         <Cover />
         <Description />
         <Airplanes />
-        {/* <Links /> */}
+        <Links />
       </main>
     );
   }

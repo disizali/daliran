@@ -99,16 +99,9 @@
 }
 .navy-changer-left {
   @include buttonChangerStyle();
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: auto;
 }
 .navy-changer-right {
   @include buttonChangerStyle();
-  top: 0;
-  bottom: 0;
-  // left: calc(100% - 50px - 5%);
 }
 .navy-changer-buttons {
   width: 100%;
@@ -121,9 +114,9 @@
   }
 
   .navy-image-1-disable {
-    transform: translate(-70%, -100%) scale(0.7);
+    transform: translate(-70%, -120%) scale(0.7);
   }
   .navy-image-2-disable {
-    transform: translate(-30%, -100%) scale(0.7);
+    transform: translate(-30%, -120%) scale(0.7);
   }
 }

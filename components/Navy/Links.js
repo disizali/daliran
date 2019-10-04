@@ -9,9 +9,13 @@ export default class Cover extends React.Component {
 
   render() {
     return (
-      <section className="navy-links">
-        <Row className="navy-links-row">
-          <Col className="navy-link-1 rtl text-right pr-5 pt-5 ">
+      <section className="navy-links w-100 rtl">
+        <Row className="navy-links-row m-0">
+          <Col
+            className="h-100 w-100 navy-link-item navy-link-item-1"
+            sm={12}
+            md={4}
+          >
             <ul>
               <li>
                 <Link href="#">
@@ -35,12 +39,20 @@ export default class Cover extends React.Component {
               </li>
             </ul>
           </Col>
-          <Col className="navy-link-2">
+          <Col
+            className="h-100 w-100 navy-link-item  navy-link-item-2"
+            sm={12}
+            md={4}
+          >
             <Link href="#">
               <a>کلاس های پرواز</a>
             </Link>
           </Col>
-          <Col className="navy-link-3">
+          <Col
+            className="h-100 w-100 navy-link-item navy-link-item-3"
+            sm={12}
+            md={4}
+          >
             <Link href="#">
               <a>دانلود بروشور</a>
             </Link>

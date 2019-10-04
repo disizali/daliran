@@ -40,11 +40,11 @@
 .desc-video {
   width: 20%;
   min-width: 400px;
-  height: 400px;
+  height: 300px;
   right: calc(60% - 50px);
   top: -50px;
   position: relative;
-  background: black;
+  background: linear-gradient(to top, #ebf7f7, #e6e1ee);
   &:hover > i {
     display: block;
   }
@@ -99,7 +99,6 @@ $splitterHeight: 600px;
     margin-left: 10px;
   }
   .desc-video {
-    background: black;
     bottom: 0;
     position: absolute;
     top: 500px;
