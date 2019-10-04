@@ -34,7 +34,7 @@ export default class Airplanes extends React.Component {
         name.style.opacity = 1;
         name.style.letterSpacing = `5px`;
       }
-    }, 5);
+    }, 2);
   }
 
   render() {
