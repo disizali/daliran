@@ -17,7 +17,6 @@ export default class Mountain extends React.Component {
   render() {
     return (
       <section className="mountain" id="mountain">
-        {/* <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.0.2/dist/simpleParallax.min.js"></script> */}
         <div className="airplane-overlay"></div>
         <img
           src="/static/images/mountain.png"
