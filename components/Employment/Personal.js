@@ -124,10 +124,10 @@ export default class Personal extends React.Component {
                 <input
                   type="number"
                   name="user-family"
-                  min="1300"
-                  max="1398"
-                  className="form-control text-right"
-                  placeholder="1398"
+                  min="00"
+                  max="98"
+                  className="form-control text-right w-100"
+                  placeholder="98"
                 />
               </Col>
             </Row>
