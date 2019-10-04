@@ -79,6 +79,7 @@ export default class Employment extends React.Component {
     }
   }
   goToLevel(level) {
+    scrollTo(0, 0);
     this.setState({ level });
   }
   handleChanges(e) {
