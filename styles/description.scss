@@ -39,6 +39,7 @@
 }
 
 .desc-video {
+  z-index: 4;
   width: 20%;
   min-width: 400px;
   height: 300px;
@@ -88,6 +89,9 @@ $splitterHeight: 600px;
 }
 
 @media (max-width: 1108px) {
+  .description {
+    z-index: 2;
+  }
   .desc-about {
     width: 100%;
     padding: 40px 40px 0 0;

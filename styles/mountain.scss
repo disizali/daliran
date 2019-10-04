@@ -142,9 +142,14 @@
     bottom: -300px;
   }
 }
-
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .mountain-airplane {
     bottom: 0;
+  }
+}
+
+@media (max-width: 330px) {
+  .mountain-airplane {
+    bottom: 30px;
   }
 }
