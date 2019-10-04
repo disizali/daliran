@@ -48,6 +48,7 @@
 @media (max-width: 500px) {
   .navy-airplane-number {
     font-size: 7em;
+    margin-top: 10px;
   }
 }
 
@@ -87,6 +88,8 @@
   font-size: 1.5em;
   line-height: 50px;
   text-align: center;
+  display: flex;
+  justify-content: center;
   transition: all 0.3s;
   color: white;
   &:hover {
@@ -112,7 +115,6 @@
   .navy-image-selected {
     transform: translate(-50%, -30%);
   }
-
   .navy-image-1-disable {
     transform: translate(-70%, -120%) scale(0.7);
   }
