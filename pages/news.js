@@ -5,7 +5,7 @@ import axios from "axios";
 import { Container, Row, Col } from "reactstrap";
 
 class News extends React.Component {
-  static async getInitialProps() {
+  static async getInitialProps(context) {
     const host =
       context.req != undefined
         ? `http://${context.req.headers.host}`
