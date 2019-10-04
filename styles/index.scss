@@ -18,12 +18,18 @@ $accentColor: #cea158;
 @import "employment/index";
 @import "contact";
 
+.layout {
+  overflow-x: hidden;
+  position: relative;
+}
+
 body {
   padding-top: 6rem;
 }
 
 html {
   width: 100vw;
+  overflow-x: hidden;
 }
 body {
   overflow-x: hidden;

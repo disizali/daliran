@@ -12,7 +12,7 @@ class Layout extends React.Component {
 
   render() {
     return (
-      <div className="all">
+      <main className="layout">
         <Head>
           <title>هواپیمایی دلیران</title>
           <link rel="icon" href="/static/images/logo.png" type="image/png" />
@@ -20,7 +20,7 @@ class Layout extends React.Component {
         <Navbar />
         {this.props.children}
         <Footer />
-      </div>
+      </main>
     );
   }
 }
