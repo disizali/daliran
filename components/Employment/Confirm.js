@@ -50,6 +50,15 @@ export default class Confirm extends React.Component {
         </div>
         <p style={{ display: userName && userFamily ? "none" : "block" }}>
           ابتدا بخش های قبلی را تکمیل بفرمایید
+          <Button
+            className="form-control employment-btn-continue"
+            color="warning"
+            onClick={() => {
+              goToLevel(1);
+            }}
+          >
+            بخش 1
+          </Button>
         </p>
       </section>
     );
