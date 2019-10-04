@@ -1,5 +1,4 @@
 import React from "react";
-// import simpleParallax from "simple-parallax-js";
 export default class Mountain extends React.Component {
   constructor(props) {
     super(props);
@@ -11,8 +10,7 @@ export default class Mountain extends React.Component {
     new simpleParallax(airplane, {
       overflow: true,
       orientation: "up",
-      scale: 1.3,
-      breakpoint: 100
+      scale: 1.5,
     });
   }
 
