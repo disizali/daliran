@@ -5,8 +5,14 @@ import axios from "axios";
 import { Container, Row, Col } from "reactstrap";
 
 class Magazine extends React.Component {
-  static async getInitialProps() {
-    const { data } = await axios.get("http://localhost:3000/api/magazine");
+  static async getInitialProps(context) {
+    const host =
+      context.req != undefined
+        ? `http://${context.req.headers.host}`
+        : `${window.location.origin}`;
+    console.log("host =>", host);
+    console.log("requested to => ", `${host}/api/magazine`);
+    const { data } = await axios.get(`${host}/api/magazine`);
     return { data };
   }
 

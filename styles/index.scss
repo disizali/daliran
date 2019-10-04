@@ -20,8 +20,13 @@ $accentColor: #cea158;
 
 body {
   padding-top: 6rem;
+}
+
+html,
+body {
   overflow-x: hidden;
   width: 100%;
+  height: 100%;
 }
 
 .all {
