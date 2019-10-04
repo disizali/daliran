@@ -29,7 +29,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  animation: moveSky 30s linear infinite;
+  animation: moveSky 10s linear infinite;
 }
 
 @keyframes moveSky {
@@ -53,5 +53,11 @@
   .slogan-bottom {
     font-family: "Bebas";
     font-size: 2em;
+  }
+}
+
+@media (max-width: 900px) {
+  .splash-cover-sky {
+    animation-duration: 10s;
   }
 }
