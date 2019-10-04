@@ -47,10 +47,12 @@ export default class NavbarClass extends React.Component {
       <div>
         <Navbar color="white shadow" light expand="lg" className="fixed-top">
           <Container>
-            <NavbarBrand href="/">
-              <img src="/static/images/logo.png" className="logo-image" />
-              <span className="logo-text">هواپیمایی دلیران</span>
-            </NavbarBrand>
+            <Link href="/">
+              <NavbarBrand href="/">
+                <img src="/static/images/logo.png" className="logo-image" />
+                <span className="logo-text">هواپیمایی دلیران</span>
+              </NavbarBrand>
+            </Link>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
