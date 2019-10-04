@@ -1,0 +1,22 @@
+@import "levels";
+
+.employment {
+  width: 100%;
+  // margin-bottom: 200px;
+}
+.employment-form {
+  background: #eeeeee;
+  padding: 10px;
+  border: 1px dotted #959595;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.employment-btn-continue {
+  background: $accentColor;
+  border: none;
+  transition: all 0.3s;
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+}

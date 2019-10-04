@@ -1,0 +1,38 @@
+@import url("~bootstrap/scss/bootstrap.scss");
+@import "~video-react/styles/scss/video-react";
+
+@import "fonts";
+
+$mainColor: #1e3964;
+$accentColor: #cea158;
+@import "navbar";
+@import "splash";
+@import "description";
+@import "mountain";
+@import "links";
+@import "footer";
+@import "magazine";
+@import "about";
+@import "navy/index";
+@import "news";
+@import "employment/index";
+@import "contact";
+
+body {
+  padding-top: 6rem;
+  overflow-x: hidden;
+  // background-color: #f1f1f1;
+  width: 100vw;
+}
+
+.all {
+  height: 1px;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+a {
+  text-decoration: none;
+}

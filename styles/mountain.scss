@@ -1,0 +1,146 @@
+.mountain {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 672px;
+  top: -165px;
+  background: linear-gradient(to top, #f1f1f1, rgba(0, 0, 0, 0));
+  background: url(/static/images/mountain.png);
+  background-size: 103% 103%;
+}
+
+.mountain-image {
+  position: absolute;
+  display: none;
+}
+.mountain-airplane {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes cloudsAnimation {
+  0% {
+    transform: translateX(100%);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-180%);
+    opacity: 0;
+  }
+}
+
+.mountain-clouds {
+  width: 60%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: cloudsAnimation 35s linear infinite;
+  // border: 2px solid red;
+}
+.mountain-clouds-2 {
+  width: 30%;
+  position: absolute;
+  bottom: 0;
+  right: -30%;
+  pointer-events: none;
+  opacity: 0.7;
+  animation: cloudsAnimation 35s linear infinite;
+  // animation-delay: 25s;
+  // border: 2px solid blue;
+}
+.mountain-clouds-3 {
+  width: 30%;
+  position: absolute;
+  bottom: 0;
+  right: -30%;
+  pointer-events: none;
+  animation: cloudsFadeAnimation 35s linear infinite;
+  // animation-delay: 25s;
+  z-index: 3;
+  // border: 2px solid yellow;
+}
+
+@keyframes cloudsFadeAnimation {
+  0% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-200%);
+    opacity: 0;
+  }
+}
+
+.airplane-overlay {
+  width: 45%;
+  height: 15%;
+  background-color: #f1f1f1;
+  position: absolute;
+  right: 0;
+  z-index: 4;
+  bottom: -15%;
+  display: none;
+}
+
+.mountain-box {
+  background-color: #cea158;
+  width: 45%;
+  position: absolute;
+  bottom: -50px;
+  right: 45%;
+  z-index: 1;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  padding: 40px 100px 60px 40px;
+  text-align: right;
+  color: white;
+}
+
+@media (max-width: 1108px) {
+  .mountain-airplane {
+    bottom: -150px;
+  }
+  .airplane-overlay {
+    display: none;
+  }
+  .mountain-image {
+    top: 478px;
+    display: block;
+  }
+  .mountain {
+    height: 600px;
+    top: -100px;
+    background: transparent;
+  }
+  .mountain-box {
+    right: 0;
+    width: 100%;
+    padding: 40px;
+    // height: 300px;
+    bottom: -350px;
+    z-index: 2;
+  }
+}
+@media (max-width: 765px) {
+  .mountain-airplane {
+    bottom: -10%;
+  }
+  .mountain-box {
+    bottom: -300px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mountain-airplane {
+    bottom: 0;
+  }
+}

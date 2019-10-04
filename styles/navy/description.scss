@@ -1,0 +1,22 @@
+.navy-description {
+  background: #456592;
+}
+.navy-desc-text {
+  position: absolute;
+}
+
+.navy-desc-body {
+  color: #dcdcdc;
+  text-align: right;
+}
+.navy-desc-title {
+  color: white;
+  font-family: "Mj Baseet";
+  text-align: right;
+}
+
+@media screen and (max-width:900px){
+  .navy-desc-text{
+    display: none;
+  }
+}

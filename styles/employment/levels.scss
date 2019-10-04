@@ -1,0 +1,52 @@
+.levels {
+  margin-top: 30px;
+  position: relative;
+  height: 100px;
+}
+
+.level-item {
+  cursor: pointer;
+  &.active {
+    .level-number {
+      transition: all 0.3s;
+      color: #547fc5;
+      border-color: #547fc5;
+    }
+    .level-text {
+      transition: all 0.3s;
+      color: #547fc5;
+    }
+  }
+
+  .level-number {
+    padding: 5px;
+    border: 2px solid #eeeeee;
+    border-radius: 200px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    font-size: 1.5em;
+    line-height: 40px;
+    color: rgb(119, 119, 119);
+  }
+  .level-text {
+    color: rgb(119, 119, 119);
+    text-align: center;
+    // margin-right: -50%;
+    height: 50px;
+    bottom: 0;
+    margin-top: 50px;
+    position: relative;
+    font-size: 0.8em;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .level-item {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+}

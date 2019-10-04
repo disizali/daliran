@@ -1,0 +1,114 @@
+.description {
+  position: relative;
+  margin: auto;
+  position: relative;
+  text-align: right;
+  height: 500px;
+}
+
+.desc-about {
+  position: absolute;
+  width: 60%;
+  height: 500px;
+  background: #2b3351;
+  color: white;
+  padding: 60px 200px;
+}
+
+.desc-image {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  width: 30%;
+  z-index: 1;
+}
+
+.desc-title {
+  font-family: "Mj Baseet";
+  z-index: 1;
+  font-size: 2em;
+}
+.desc-text {
+  position: absolute;
+  color: #dcdcdc;
+  z-index: 2;
+  font-size: 1em;
+  margin-left: 100px;
+}
+
+.desc-video {
+  width: 20%;
+  min-width: 400px;
+  height: 400px;
+  right: calc(60% - 50px);
+  top: -50px;
+  position: relative;
+  background: black;
+  &:hover > i {
+    display: block;
+  }
+}
+
+.video-control {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 1.4em;
+  border-radius: 100px;
+  border: 2px solid white;
+  padding-right: 11px;
+  padding-top: 12px;
+  cursor: pointer;
+  &:hover {
+    color: red;
+    text-shadow: 0px 0px 5px white;
+  }
+}
+
+$splitterHeight: 600px;
+
+.splitter {
+  position: absolute;
+  width: 100%;
+  height: $splitterHeight;
+  top: -100px;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0),
+    #bbbec4,
+    #bbbec4,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@media (max-width: 1108px) {
+  .desc-about {
+    width: 100%;
+    padding: 40px 40px 0 0;
+  }
+  .desc-text {
+    position: absolute;
+    color: #dcdcdc;
+    z-index: 2;
+    font-size: 1em;
+    margin-left: 10px;
+  }
+  .desc-video {
+    background: black;
+    bottom: 0;
+    position: absolute;
+    top: 500px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    z-index: 3;
+  }
+  .splitter {
+    display: none;
+  }
+}

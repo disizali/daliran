@@ -1,0 +1,48 @@
+.article-body {
+  direction: rtl;
+  font-size: 1.2em;
+}
+.article {
+  top: 20px;
+  position: relative;
+  margin-bottom: 160px;
+}
+.about-vision {
+  position: relative;
+  padding: 5% 15%;
+}
+.about-vision-title {
+  color: $mainColor;
+}
+.about-vision-body {
+  color: #4b4f5f;
+}
+.about-image-vision {
+  margin: auto;
+  left: 5%;
+  right: 0;
+  position: relative;
+}
+
+.about-chart-container {
+  position: relative;
+  margin-top: 50px;
+  background: #f1f1f1;
+  padding: 50px 0;
+}
+
+.about-chart-image {
+  width: 70%;
+  height: auto;
+  margin: auto;
+  right: 0;
+  left: 0;
+  transform: translateX(-35%);
+}
+
+@media screen and (max-width: 900px) {
+  .about-vision-image {
+    width: 90%;
+    transform: translateX(-5%);
+  }
+}

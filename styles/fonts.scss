@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Vazir";
+  src: url("/static/fonts/Vazir.eot") format("Vazir-opentype"),
+    url("/static/fonts/Vazir.woff") format("woff"),
+    url("/static/fonts/Vazir.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "iransans";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/static/fonts/IranSans.woff2);
+}
+@font-face {
+  font-family: "Mj Tunisia";
+  font-style: normal;
+  font-weight: 100;
+  src: url(/static/fonts/mjtunisia.woff2);
+}
+@font-face {
+  font-family: "Bebas";
+  font-style: normal;
+  src: url(/static/fonts/BEBAS.woff2);
+}
+@font-face {
+  font-family: "Mj Baseet";
+  font-style: normal;
+  src: url(/static/fonts/mj-baseet.woff2);
+}
+
+* {
+  font-family: "iransans";
+}
+
+@import "../static/fonts/fontawesome/scss/fontawesome.scss";
+@import "../static/fonts/fontawesome/scss/regular.scss";
+@import "../static/fonts/fontawesome/scss/solid.scss";
+@import "../static/fonts/fontawesome/scss/brands.scss";

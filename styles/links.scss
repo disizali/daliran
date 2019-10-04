@@ -1,0 +1,56 @@
+.links {
+  width: 100%;
+  background-color: #f1f1f1;
+  position: relative;
+  z-index: 0;
+  padding-top: 80px;
+  bottom: 165px;
+  margin-bottom: -160px;
+}
+
+.link-title {
+  padding: 15px 15px;
+  text-align: right;
+}
+.link-text {
+  padding: 0 15px;
+  text-align: right;
+  color: rgb(87, 87, 87);
+}
+
+.icon-image {
+  width: 100%;
+  max-width: 130px;
+}
+
+.icons-container {
+  border-top: 1px solid #e5e5e5;
+  padding: 20px;
+}
+
+.left-border:before {
+  content: "";
+  height: 100%; //You can change this if you want smaller/bigger borders
+  width: 1px;
+  position: absolute;
+  left: -20%;
+  top: 0; // If you want to set a smaller height and center it, change this value
+  background-color: #e5e5e5; // The color of your border
+}
+
+.link-item-anchor {
+  color: black;
+  &:hover{
+    text-decoration: none;
+  }
+}
+@media screen and (max-width: 1108px) {
+  .links {
+    padding-top: 500px;
+  }
+}
+@media screen and (max-width: 765px) {
+  .links {
+    padding-top: 400px;
+  }
+}

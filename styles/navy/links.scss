@@ -1,0 +1,67 @@
+.navy-links {
+  width: 100%;
+  background: red;
+}
+.navy-links-row {
+  height: 100%;
+}
+
+.navy-link-1 {
+  background: #cea158;
+  height: 100%;
+  width: 100%;
+  font-size: 1.3em;
+  ul {
+    list-style: none;
+    li {
+      margin-bottom: 25px;
+      a {
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s;
+        border-radius: 100px;
+        &:hover {
+          color: #f1e3cd;
+        }
+      }
+      &::before {
+        content: ">";
+        margin-left: 20px;
+        font-size: 0.8em;
+        color: white;
+      }
+    }
+  }
+}
+@mixin navyLinkAnchors {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+@mixin navyLinkCommons {
+  background-size: 100% 100%;
+  transition: all 1s;
+  &:hover {
+    background-size: 102% 102%;
+  }
+}
+.navy-link-2 {
+  background: linear-gradient(to top, #1e3964bb, rgba(0, 0, 0, 0)),
+    url(/static/images/classes.png) no-repeat;
+  @include navyLinkCommons();
+  a {
+    @include navyLinkAnchors();
+  }
+}
+.navy-link-3 {
+  background: linear-gradient(to top, #1e3964bb, rgba(0, 0, 0, 0)),
+    url(/static/images/brochure.png) no-repeat;
+  background-size: cover;
+  @include navyLinkCommons();
+  a {
+    @include navyLinkAnchors();
+  }
+}
