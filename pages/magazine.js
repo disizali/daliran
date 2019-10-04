@@ -10,8 +10,6 @@ class Magazine extends React.Component {
       context.req != undefined
         ? `http://${context.req.headers.host}`
         : `${window.location.origin}`;
-    console.log("host =>", host);
-    console.log("requested to => ", `${host}/api/magazine`);
     const { data } = await axios.get(`${host}/api/magazine`);
     return { data };
   }

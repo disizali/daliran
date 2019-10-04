@@ -6,7 +6,11 @@ import { Container, Row, Col } from "reactstrap";
 
 class News extends React.Component {
   static async getInitialProps() {
-    const { data } = await axios.get("http://localhost:3000/api/news");
+    const host =
+      context.req != undefined
+        ? `http://${context.req.headers.host}`
+        : `${window.location.origin}`;
+    const { data } = await axios.get(`${host}/api/news`);
     return { data };
   }
 
