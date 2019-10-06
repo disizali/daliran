@@ -5,6 +5,7 @@
   text-align: right;
   height: 500px;
   z-index: 1;
+  background: linear-gradient(to bottom, #bbbec4, transparent);
 }
 
 .desc-about {
@@ -73,19 +74,12 @@
   }
 }
 
-$splitterHeight: 600px;
-
 .splitter {
   position: absolute;
   width: 100%;
-  height: $splitterHeight;
+  height: 100px;
   top: -100px;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0),
-    #bbbec4,
-    #bbbec4,
-    rgba(0, 0, 0, 0)
-  );
+  background: linear-gradient(to top, #bbbec4, transparent);
 }
 
 @media (max-width: 1108px) {
