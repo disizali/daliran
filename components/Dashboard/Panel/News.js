@@ -9,7 +9,7 @@ export default class News extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://daliran3.disizali.new.sh/api/news").then(({ data }) => {
+    axios.get("http://daliran3.disizali.now.sh/api/news").then(({ data }) => {
       this.setState({ news: data });
     });
   }
@@ -17,7 +17,7 @@ export default class News extends Component {
   sendNews() {
     const { title, body, image, news } = this.state;
     axios
-      .post("http://daliran3.disizali.new.sh/api/news", {
+      .post("http://daliran3.disizali.now.sh/api/news", {
         title,
         body,
         image
@@ -34,7 +34,7 @@ export default class News extends Component {
   deleteNews(targetId) {
     const { news } = this.state;
     axios
-      .delete("http://daliran3.disizali.new.sh/api/news", { data: { targetId } })
+      .delete("http://daliran3.disizali.now.sh/api/news", { data: { targetId } })
       .then(({ data }) => {
         if (data == "no news") {
           return;
