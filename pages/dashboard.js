@@ -21,7 +21,7 @@ export class dashboard extends Component {
       return this.setState({ loading: false, garanted: -1 });
     } else {
       axios
-        .post("http://daliran.disizali.now.sh/api/auth", { authToken })
+        .post("https://daliran.disizali.now.sh/api/auth", { authToken })
         .then(({ data }) => {
           if (data == "unauthorized") {
             return cookie.remove("authtoken");
