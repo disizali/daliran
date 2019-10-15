@@ -1,0 +1,22 @@
+.login-container {
+  position: relative;
+  top: 50%;
+  margin: auto;
+  background: rgb(220, 220, 220);
+  border-radius: 10px;
+  input {
+    min-height: 40px !important;
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    width: 80%;
+  }
+  span {
+    transition: 0.7s all;
+  }
+}

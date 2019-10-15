@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "enName": "paris",
+      "faName": "پاریس",
+      "image": "paris.gif"
+    },
+    {
+      "id": 2,
+      "enName": "shanghai",
+      "faName": "شانگهای",
+      "image": "shinghai.jpeg"
+    },
+    {
+      "id": 3,
+      "enName": "istanbul",
+      "faName": "استانبول",
+      "image": "istanbul.jpg"
+    }
+  ]

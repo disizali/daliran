@@ -1,0 +1,58 @@
+.panel-actions {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    cursor: pointer;
+    li {
+      padding: 10px 22px;
+      color: rgba(106, 106, 148, 0.5);
+      font-size: 1.2em;
+      transition: all 0.3s;
+      div {
+        padding: 10px;
+        transition: all 0.3s;
+        border-radius: 20px;
+      }
+      &.active > div {
+        background: rgb(36, 98, 190);
+        color: #eeeeee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      span {
+        transition: all 0.5s;
+        margin-right: 10px;
+      }
+      i {
+        transition: all 0.5s;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      &:hover:not(.active) > div > i {
+        padding-right: 5px;
+      }
+      &:hover:not(.active) > div > span {
+        padding-right: 5px;
+      }
+    }
+  }
+}
+
+.panel-news {
+  color: rgb(23, 50, 90);
+}
+
+.panel-editor {
+  min-height: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea.panel-editor {
+  min-height: 150px;
+}

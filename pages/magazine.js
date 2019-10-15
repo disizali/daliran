@@ -6,10 +6,11 @@ import { Container, Row, Col } from "reactstrap";
 
 class Magazine extends React.Component {
   static async getInitialProps(context) {
-    const host =
-      context.req != undefined
-        ? `http://${context.req.headers.host}`
-        : `${window.location.origin}`;
+    let host ="http://localhost:3000"
+      // context.req != undefined
+        // ? `http://${context.req.headers.host}`
+        // : `${window.location.origin}`;
+    // host = host == undefined && "localhost:3000";
     const { data } = await axios.get(`${host}/api/magazine`);
     return { data };
   }
@@ -42,7 +43,7 @@ class Magazine extends React.Component {
                           <i className="fas fa-search"></i>
                         </a>
                       </div>
-                      <h3 className="text-right text-muted">{item.fa_name}</h3>
+                      <h3 className="text-right text-muted">{item.faName}</h3>
                     </div>
                   </Col>
                 );
