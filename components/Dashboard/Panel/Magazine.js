@@ -9,7 +9,7 @@ export default class News extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://daliran3.disizali.now.sh/api/magazine").then(({ data }) => {
+    axios.get("http://daliran.disizali.now.sh/api/magazine").then(({ data }) => {
       this.setState({ magazines: data });
     });
   }
@@ -17,7 +17,7 @@ export default class News extends Component {
   sendMagazine() {
     const { faName, enName, magazines, image } = this.state;
     axios
-      .post("http://daliran3.disizali.now.sh/api/magazine", {
+      .post("http://daliran.disizali.now.sh/api/magazine", {
         faName,
         enName,
         image
@@ -42,7 +42,7 @@ export default class News extends Component {
   deleteMagazine(targetId) {
     const { magazines } = this.state;
     axios
-      .delete("http://daliran3.disizali.now.sh/api/magazine", { data: { targetId } })
+      .delete("http://daliran.disizali.now.sh/api/magazine", { data: { targetId } })
       .then(({ data }) => {
         if (data == "no magazine") {
           return;
