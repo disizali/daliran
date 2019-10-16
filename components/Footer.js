@@ -8,7 +8,7 @@ export default class Footer extends React.Component {
     this.state = { news: [] };
   }
   async componentDidMount() {
-    const { data: news } = await axios.get(`https://daliran.disizali.now.sh/api/news`);
+    const { data: news } = await axios.get(`http://localhost:3000/api/news`);
     this.setState({ news });
   }
   render() {

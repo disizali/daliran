@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import { Container, Button, Table, Row, Col } from "reactstrap";
 import axios from "axios";
 
+import faunadb from "faunadb";
+const q = faunadb.query;
+var client = new faunadb.Client({ secret: "246280646936232468" });
+var createP = client.query(
+  q.Create(q.Collection("test"), { data: { testField: "testValue" } })
+);
+console.log(createP);
+
 export default class News extends Component {
   constructor(props) {
     super(props);
@@ -9,15 +17,15 @@ export default class News extends Component {
   }
 
   componentDidMount() {
-    axios.get("https://daliran.disizali.now.sh/api/news").then(({ data }) => {
-      this.setState({ news: data });
-    });
+    // axios.get("http://daliran.disizali.now.sh/api/news").then(({ data }) => {
+    //   this.setState({ news: data });
+    // });
   }
 
   sendNews() {
     const { title, body, image, news } = this.state;
     axios
-      .post("https://daliran.disizali.now.sh/api/news", {
+      .post("http://localhost:3000/api/news", {
         title,
         body,
         image
@@ -34,7 +42,9 @@ export default class News extends Component {
   deleteNews(targetId) {
     const { news } = this.state;
     axios
-      .delete("https://daliran.disizali.now.sh/api/news", { data: { targetId } })
+      .delete("http://localhost:3000/api/news", {
+        data: { targetId }
+      })
       .then(({ data }) => {
         if (data == "no news") {
           return;

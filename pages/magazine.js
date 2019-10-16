@@ -6,7 +6,7 @@ import { Container, Row, Col } from "reactstrap";
 
 class Magazine extends React.Component {
   static async getInitialProps(context) {
-    let host ="https://daliran.disizali.now.sh"
+    let host ="http://localhost:3000"
       // context.req != undefined
         // ? `http://${context.req.headers.host}`
         // : `${window.location.origin}`;

@@ -14,6 +14,7 @@ import {
   DropdownMenu,
   Container
 } from "reactstrap";
+import axios from "axios";
 
 export default class NavbarClass extends React.Component {
   constructor(props) {
@@ -21,8 +22,13 @@ export default class NavbarClass extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      navbar: []
     };
+  }
+  async componentDidMount() {
+    const { data: navbar } = await axios.get("http://localhost:3001/navbar");
+    this.setState({ navbar });
   }
   toggle() {
     this.setState({
@@ -54,7 +60,18 @@ export default class NavbarClass extends React.Component {
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem>
+                {this.state.navbar.map((item, index) => {
+                  console.log(item);
+                  return (
+                    <NavItem key={index}>
+                      <Link href={item.link}>
+                        <NavLink href={item.link}>{item.title}</NavLink>
+                      </Link>
+                    </NavItem>
+                  );
+                })}
+
+                {/*  <NavItem>
                   <Link href="/">
                     <NavLink href="/">صفحه اصلی</NavLink>
                   </Link>
@@ -88,7 +105,8 @@ export default class NavbarClass extends React.Component {
                   <Link href="/contact">
                     <NavLink href="/contact">تماس با ما</NavLink>
                   </Link>
-                </NavItem>
+                </NavItem> */}
+
                 {/* <NavItem>
                   <NavLink>
                     <div

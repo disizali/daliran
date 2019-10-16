@@ -6,7 +6,7 @@ import { Container, Row, Col } from "reactstrap";
 
 class News extends React.Component {
   static async getInitialProps(context) {
-    let host = "https://daliran.disizali.now.sh";
+    let host = "http://localhost:3000";
     // let host =
     //   context.req != undefined
     //     ? `http://${context.req.headers.host}`
