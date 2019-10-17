@@ -2,41 +2,80 @@ import React, { Component } from "react";
 import { Container, Button, Table, Row, Col } from "reactstrap";
 import axios from "axios";
 
-import faunadb from "faunadb";
-const q = faunadb.query;
-var client = new faunadb.Client({ secret: "246280646936232468" });
-var createP = client.query(
-  q.Create(q.Collection("test"), { data: { testField: "testValue" } })
-);
-console.log(createP);
-
 export default class News extends Component {
   constructor(props) {
     super(props);
     this.state = { title: "", body: "", image: "", news: [] };
+    this.bodyChangeHandler = this.bodyChangeHandler.bind(this);
+
+    this.toolbar = [
+      { size: ["small", false, "large", "huge"] }[{ header: [1, 2, false] }]
+    ];
+  }
+
+  modules() {
+    return {
+      toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ header: 1 }, { header: 2 }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" }
+        ],
+        [{ direction: "rtl" }],
+        [{ align: [] }],
+        ["clean"]
+      ]
+    };
+  }
+
+  formats() {
+    return [
+      "header",
+      "bold",
+      "italic",
+      "underline",
+      "strike",
+      "blockquote",
+      "list",
+      "bullet",
+      "indent",
+      "align",
+      "link",
+      "direction",
+      "image"
+    ];
   }
 
   componentDidMount() {
+    const editor = document.querySelector("#editor p");
+    editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
+    // .classList = ();
     // axios.get("http://daliran.disizali.now.sh/api/news").then(({ data }) => {
     //   this.setState({ news: data });
     // });
   }
 
   sendNews() {
-    const { title, body, image, news } = this.state;
-    axios
-      .post("http://localhost:3000/api/news", {
-        title,
-        body,
-        image
-      })
-      .then(({ data }) => {
-        if (data == "wrong data") {
-          return;
-        }
-        const newNews = [{ id: news.length + 1, title, body }, ...news];
-        return this.setState({ title: "", body: "", news: newNews });
-      });
+    alert(this.state.body);
+    // const { title, body, image, news } = this.state;
+
+    // axios
+    //   .post("http://localhost:3000/api/news", {
+    //     title,
+    //     body,
+    //     image
+    //   })
+    //   .then(({ data }) => {
+    //     if (data == "wrong data") {
+    //       return;
+    //     }
+    //     const newNews = [{ id: news.length + 1, title, body }, ...news];
+    //     return this.setState({ title: "", body: "", news: newNews });
+    //   });
   }
 
   deleteNews(targetId) {
@@ -57,13 +96,14 @@ export default class News extends Component {
   titleChangeHandler(e) {
     this.setState({ title: e.target.value });
   }
-  bodyChangeHandler(e) {
-    this.setState({ body: e.target.value });
+  bodyChangeHandler(value) {
+    this.setState({ body: value });
   }
   imageChangeHandler(e) {
     this.setState({ image: e.target.value });
   }
   render() {
+    const ReactQuill = require("react-quill"); // ES6
     return (
       <div className="panel-news">
         <Container className="p-5 d-flex flex-column">
@@ -75,13 +115,18 @@ export default class News extends Component {
             onChange={this.titleChangeHandler.bind(this)}
             value={this.state.title}
           />
-          <textarea
-            type="text"
-            className="panel-editor my-2"
-            placeholder="متن خبر"
-            onChange={this.bodyChangeHandler.bind(this)}
-            value={this.state.body}
-          ></textarea>
+          <div id="editor">
+            <ReactQuill
+              theme="snow"
+              className="panel-editor text-right"
+              placeholder="متن خبر"
+              value={this.state.body}
+              modules={this.modules()}
+              style={{ direction: "ltr" }}
+              formats={this.formats()}
+              onChange={this.bodyChangeHandler}
+            />
+          </div>
           <Row className="my-3">
             <Col
               sm={2}

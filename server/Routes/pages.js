@@ -1,12 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { sequelize: db } = require("../../models");
-const { Navbar } = db.models;
+const { Page } = db.models;
 
 router.get("/", async (req, res) => {
-  res.send(
-    await Navbar.findAll({ order: [["order", "ASC"], ["updatedAt", "DESC"]] })
-  );
+  res.send(await Page.findAll());
 });
 
 router.post("/", async (req, res) => {

@@ -8,7 +8,7 @@ import Pages from "./Pages";
 export class panel extends Component {
   constructor(props) {
     super(props);
-    this.state = { panel: 4 };
+    this.state = { panel: 1 };
   }
   getPanel() {
     const { panel } = this.state;
