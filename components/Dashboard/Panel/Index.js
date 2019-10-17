@@ -5,11 +5,12 @@ import Magazine from "./Magazine";
 import Navbar from "./Navbar";
 import Pages from "./Pages";
 import Images from "./Images";
+import Data from "./Data";
 
 export default class Panel extends Component {
   constructor(props) {
     super(props);
-    this.state = { panel: 4 };
+    this.state = { panel: 6 };
   }
   getPanel() {
     const { panel } = this.state;
@@ -24,6 +25,8 @@ export default class Panel extends Component {
         return <Pages />;
       case 5:
         return <Images />;
+      case 6:
+        return <Data />;
     }
   }
   changePanel(panel) {
@@ -90,6 +93,15 @@ export default class Panel extends Component {
                 <div>
                   <i className="fa fa-images"></i>
                   <span>تصاویر</span>
+                </div>
+              </li>
+              <li
+                className={`w-100 h-100 ${panel == 6 && "active"}`}
+                onClick={() => this.changePanel(6)}
+              >
+                <div>
+                  <i className="fa fa-file-alt"></i>
+                  <span>متن ها</span>
                 </div>
               </li>
             </ul>

@@ -47,7 +47,7 @@ export default class News extends Component {
   }
 
   componentDidMount() {
-    const editor = docuwment.querySelector("#editor p");
+    const editor = document.querySelector("#editor p");
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
     axios.get("http://localhost:3001/news").then(({ data }) => {
       this.setState({ news: data });

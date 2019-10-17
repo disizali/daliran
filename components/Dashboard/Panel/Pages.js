@@ -97,7 +97,7 @@ export default class Pages extends Component {
     return (
       <div className="panel">
         <Container className="p-5 d-flex flex-column">
-          <h2>افزودن پیج جدید</h2>
+          <h2>افزودن صفحه جدید</h2>
           <div>
             <input
               type="text"
