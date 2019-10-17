@@ -7,31 +7,35 @@ router.get("/", async (req, res) => {
   res.send(await Page.findAll());
 });
 
+router.get("/:name", async (req, res) => {
+  res.send(await Page.findOne({ where: { name: req.params.name } }));
+});
+
+
 router.post("/", async (req, res) => {
-  const { title, link, order } = req.body;
-  if (!title || !link || !order) return res.status(400).send("wrong data");
-  return res.send(await Navbar.create(req.body));
+  const { name, body } = req.body;
+  if (!name || !body) return res.status(400).send("wrong data");
+  return res.send(await Page.create(req.body));
 });
 
 router.delete("/", async (req, res) => {
   const { targetId } = req.body;
-  if (!targetId || !(await Navbar.findByPk(targetId)))
-    return res.send("no navbar");
-  await Navbar.destroy({ where: { id: targetId } });
+  if (!targetId || !(await Page.findByPk(targetId))) return res.send("no page");
+  await Page.destroy({ where: { id: targetId } });
   res.status(200).send("deleted");
 });
 
 router.put("/", async (req, res) => {
-  const { targetId, title, link, order } = req.body;
+  const { targetId, title, body, order } = req.body;
   if (
     !targetId ||
     !title ||
-    !link ||
+    !body ||
     !order ||
-    !(await Navbar.findByPk(targetId))
+    !(await Page.findByPk(targetId))
   )
-    return res.send("no navbar");
-  await Navbar.update({ title, link, order }, { where: { id: targetId } });
+    return res.send("no page");
+  await Page.update({ title, body, order }, { where: { id: targetId } });
   res.status(200).send("updated");
 });
 

@@ -1,20 +1,62 @@
 import React, { Component } from "react";
 import { Container, Button, Table, Row, Col } from "reactstrap";
 import axios from "axios";
+import Link from "next/link"
 
-export default class News extends Component {
+export default class Pages extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", body: "", pages: [] };
+    this.state = { link: "", body: "", pages: [] };
+    this.bodyChangeHandler = this.bodyChangeHandler.bind(this);
   }
+
+  modules() {
+    return {
+      toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ header: 1 }, { header: 2 }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" }
+        ],
+        [{ direction: "rtl" }],
+        [{ align: [] }],
+        ["clean"]
+      ]
+    };
+  }
+
+  formats() {
+    return [
+      "header",
+      "bold",
+      "italic",
+      "underline",
+      "strike",
+      "blockquote",
+      "list",
+      "bullet",
+      "indent",
+      "align",
+      "link",
+      "direction",
+      "image"
+    ];
+  }
+
   componentDidMount() {
-    axios.get("http://localhost:3001/pages").then(({ data: pages }) => {
-      this.setState({ pages });
+    const editor = document.querySelector("#editor p");
+    editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
+    axios.get("http://localhost:3001/pages").then(({ data }) => {
+      this.setState({ pages: data });
     });
   }
 
-  addPage() {
-    const { name, body } = this.state;
+  sendPage() {
+    const { name, body, pages } = this.state;
     axios
       .post("http://localhost:3001/pages", {
         name,
@@ -24,21 +66,19 @@ export default class News extends Component {
         if (data == "wrong data") {
           return;
         }
-        const newPages = [...pages, { id: data.id, name, body }];
-        return this.setState({
-          name: "",
-          body: "",
-          pages: newPages
-        });
+        const newPages = [{ id: data.id, name, body }, ...pages];
+        return this.setState({ name: "", body: "", pages: newPages });
       });
   }
 
   deletePage(targetId) {
     const { pages } = this.state;
     axios
-      .delete("http://localhost:3001/pages", { data: { targetId } })
+      .delete("http://localhost:3001/pages", {
+        data: { targetId }
+      })
       .then(({ data }) => {
-        if (data == "no page") {
+        if (data == "no pages") {
           return;
         }
         return this.setState({
@@ -46,37 +86,51 @@ export default class News extends Component {
         });
       });
   }
-
-  editPage(targetId) {
-    const name = document.getElementById(`name-${targetId}`).value;
-    const body = document.getElementById(`body-${targetId}`).value;
-    const data = { name, body };
-    axios
-      .put("http://localhost:3001/pages", { targetId, ...data })
-      .then(({ data }) => {
-        if (data == "no page") {
-          return;
-        } else if (data == "updated") {
-          alert("ویرایش با موفقیت انجام شد");
-        }
-      });
-  }
   nameChangeHandler(e) {
     this.setState({ name: e.target.value });
   }
-  bodyChangeHandler(e) {
-    this.setState({ body: e.target.value });
+  bodyChangeHandler(value) {
+    this.setState({ body: value });
   }
   render() {
+    const ReactQuill = require("react-quill"); // ES6
     return (
-      <div className="panel-news">
+      <div className="panel">
         <Container className="p-5 d-flex flex-column">
-          <h2>ویرایش صفحات</h2>
-          <Table responsive bordered striped className="text-right my-2">
+          <h2>افزودن پیج جدید</h2>
+          <div>
+            <input
+              type="text"
+              className="panel-editor my-2 ml-2 text-left"
+              style={{ direction: "ltr" }}
+              placeholder="لینک"
+              onChange={this.nameChangeHandler.bind(this)}
+              value={this.state.name}
+            />
+            <span className="mr-2">/pages/</span>
+          </div>
+          <div id="editor">
+            <ReactQuill
+              theme="snow"
+              className="panel-editor text-right"
+              placeholder="محتوا"
+              value={this.state.body}
+              modules={this.modules()}
+              style={{ direction: "ltr" }}
+              formats={this.formats()}
+              onChange={this.bodyChangeHandler}
+            />
+          </div>
+          <Button color="primary" onClick={this.sendPage.bind(this)}>
+            ارسال
+          </Button>
+          <br />
+          <hr className="bg-muted text-warning w-100 h-100" />
+          <br />
+          <Table responsive bordered striped className="text-right">
             <thead>
               <tr>
-                <th width="20%">نام</th>
-                <th width="60%">محتوا</th>
+                <th width="80%">لینک</th>
                 <th width="20%">عملیات</th>
               </tr>
             </thead>
@@ -85,76 +139,22 @@ export default class News extends Component {
                 return (
                   <tr key={index}>
                     <td>
-                      <input
-                        type="text"
-                        className="editable-text"
-                        defaultValue={item.title}
-                        id={`name-${item.id}`}
-                      />
+                      <Link href={`/pages/${item.name}`}>
+                        <a>{item.name}</a>
+                      </Link>
                     </td>
                     <td>
-                      <textarea
-                        type="text"
-                        className="text-left editable-text"
-                        defaultValue={item.link}
-                        id={`body-${item.id}`}
-                      ></textarea>
-                    </td>
-                    <td className="d-flex">
                       <Button
                         color="danger"
-                        className="d-flex mx-1"
                         onClick={() => this.deletePage(item.id)}
                       >
                         <i className="fas fa-trash mx-2"></i>
                         <span className="mx-2">حذف</span>
                       </Button>
-                      <Button
-                        color="warning"
-                        className="d-flex mx-1"
-                        onClick={() => this.editPage(item.id)}
-                      >
-                        <i className="fas fa-pen mx-2"></i>
-                        <span className="mx-2">ویرایش</span>
-                      </Button>
                     </td>
                   </tr>
                 );
               })}
-              <tr>
-                <td>
-                  <input
-                    type="text"
-                    className="panel-editor my-2 text-left h-50"
-                    placeholder="نام"
-                    onChange={this.nameChangeHandler.bind(this)}
-                    value={this.state.name}
-                  />
-                  <span className="text-muted">/pages/</span>
-                </td>
-                <td>
-                  <textarea
-                    type="text"
-                    className="panel-editor my-2 text-left"
-                    style={{ direction: "ltr" }}
-                    placeholder="link"
-                    rows={2}
-                    cols={30}
-                    onChange={this.bodyChangeHandler.bind(this)}
-                    value={this.state.body}
-                  ></textarea>
-                </td>
-                <td>
-                  <Button
-                    color="primary"
-                    className="my-2 w-100"
-                    onClick={this.addPage.bind(this)}
-                  >
-                    <i className="fas fa-plus mx-2"></i>
-                    <span className="mx-2">افزودن</span>
-                  </Button>
-                </td>
-              </tr>
             </tbody>
           </Table>
         </Container>

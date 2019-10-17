@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Button, Table, Row, Col } from "reactstrap";
 import axios from "axios";
 
-export default class News extends Component {
+export default class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = { title: "", link: "/", order: "", navbar: [] };
@@ -76,7 +76,7 @@ export default class News extends Component {
   }
   render() {
     return (
-      <div className="panel-news">
+      <div className="panel">
         <Container className="p-5 d-flex flex-column">
           <h2>ویرایش منوی نویگیشن</h2>
           <Table responsive bordered striped className="text-right my-2">

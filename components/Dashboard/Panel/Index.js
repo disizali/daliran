@@ -4,11 +4,12 @@ import News from "./News";
 import Magazine from "./Magazine";
 import Navbar from "./Navbar";
 import Pages from "./Pages";
+import Images from "./Images";
 
-export class panel extends Component {
+export default class Panel extends Component {
   constructor(props) {
     super(props);
-    this.state = { panel: 1 };
+    this.state = { panel: 4 };
   }
   getPanel() {
     const { panel } = this.state;
@@ -21,6 +22,8 @@ export class panel extends Component {
         return <Navbar />;
       case 4:
         return <Pages />;
+      case 5:
+        return <Images />;
     }
   }
   changePanel(panel) {
@@ -50,7 +53,7 @@ export class panel extends Component {
               >
                 <div>
                   <i className="fa fa-rss"></i>
-                  <span>افزودن خبر</span>
+                  <span>اخبار</span>
                 </div>
               </li>
               <li
@@ -59,7 +62,7 @@ export class panel extends Component {
               >
                 <div>
                   <i className="fa fa-newspaper"></i>
-                  <span>افزودن مجله</span>
+                  <span>مجلات</span>
                 </div>
               </li>
               <li
@@ -68,7 +71,7 @@ export class panel extends Component {
               >
                 <div>
                   <i className="fa fa-bars"></i>
-                  <span>ویرایش نویگیشن</span>
+                  <span>نویگیشن</span>
                 </div>
               </li>
               <li
@@ -78,6 +81,15 @@ export class panel extends Component {
                 <div>
                   <i className="fa fa-copy"></i>
                   <span>صفحات</span>
+                </div>
+              </li>
+              <li
+                className={`w-100 h-100 ${panel == 5 && "active"}`}
+                onClick={() => this.changePanel(5)}
+              >
+                <div>
+                  <i className="fa fa-images"></i>
+                  <span>تصاویر</span>
                 </div>
               </li>
             </ul>
@@ -90,5 +102,3 @@ export class panel extends Component {
     );
   }
 }
-
-export default panel;

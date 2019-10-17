@@ -8,10 +8,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownItem,
-  DropdownMenu,
   Container
 } from "reactstrap";
 import axios from "axios";
@@ -61,7 +57,13 @@ export default class NavbarClass extends React.Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 {this.state.navbar.map((item, index) => {
-                  console.log(item);
+                  if (item.link == "/rss") {
+                    return (
+                      <NavItem key={index}>
+                        <NavLink href={item.link}>{item.title}</NavLink>
+                      </NavItem>
+                    );
+                  }
                   return (
                     <NavItem key={index}>
                       <Link href={item.link}>
@@ -70,60 +72,6 @@ export default class NavbarClass extends React.Component {
                     </NavItem>
                   );
                 })}
-
-                {/*  <NavItem>
-                  <Link href="/">
-                    <NavLink href="/">صفحه اصلی</NavLink>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link href="/about">
-                    <NavLink href="/about">درباره ما</NavLink>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link href="/magazine">
-                    <NavLink href="/magazine">مجله گردشگری</NavLink>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link href="/navy">
-                    <NavLink href="/navy">ناوگان هوایی</NavLink>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link href="/employment">
-                    <NavLink href="/employment">فرم همکاری</NavLink>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link href="/news">
-                    <NavLink href="/news">اخبار</NavLink>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link href="/contact">
-                    <NavLink href="/contact">تماس با ما</NavLink>
-                  </Link>
-                </NavItem> */}
-
-                {/* <NavItem>
-                  <NavLink>
-                    <div
-                      className="search-bar p-1 ml-3"
-                      onClick={this.toggleSearchBar.bind(this)}
-                    >
-                      <i className="fas fa-search search-icon text-white"></i>
-                    </div>
-                    <input
-                      type="text"
-                      className="search-box"
-                      placeholder="جستجو"
-                      id="search-bar"
-                      onKeyPress={this.search}
-                    />
-                  </NavLink>
-                </NavItem> */}
               </Nav>
             </Collapse>
           </Container>

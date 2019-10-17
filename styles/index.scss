@@ -1,5 +1,8 @@
 @import url("~bootstrap/scss/bootstrap.scss");
 @import "~video-react/styles/scss/video-react";
+@import "~react-quill/dist/quill.core.css";
+@import "~react-quill/dist/quill.snow.css";
+
 @import "fonts";
 
 $mainColor: #1e3964;
@@ -16,6 +19,7 @@ $accentColor: #cea158;
 @import "news";
 @import "employment/index";
 @import "contact";
+@import "quill";
 
 .layout {
   overflow-x: hidden;
@@ -47,3 +51,4 @@ body {
 a {
   text-decoration: none;
 }
+

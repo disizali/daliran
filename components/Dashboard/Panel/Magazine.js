@@ -2,24 +2,81 @@ import React, { Component } from "react";
 import { Container, Button, Table, Row, Col } from "reactstrap";
 import axios from "axios";
 
-export default class News extends Component {
+export default class Magazine extends Component {
   constructor(props) {
     super(props);
-    this.state = { enName: "", faName: "", image: "", magazines: [] };
+    this.state = {
+      enName: "",
+      faName: "",
+      body: "",
+      image: "",
+      magazines: [],
+      images: []
+    };
+    this.bodyChangeHandler = this.bodyChangeHandler.bind(this);
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/api/magazine").then(({ data }) => {
+    const editor = document.querySelector("#editor p");
+    editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
+
+    axios.get("http://localhost:3001/magazine").then(({ data }) => {
       this.setState({ magazines: data });
+    });
+    axios.get("http://localhost:3001/images").then(({ data: images }) => {
+      this.setState({ images, image: images[0] });
     });
   }
 
+  modules() {
+    return {
+      toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ header: 1 }, { header: 2 }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" }
+        ],
+        [{ direction: "rtl" }],
+        [{ align: [] }],
+        [{ color: [] }],
+        ["image", "link"],
+        [{ background: [] }],
+        ["clean"]
+      ]
+    };
+  }
+
+  formats() {
+    return [
+      "header",
+      "bold",
+      "italic",
+      "underline",
+      "strike",
+      "blockquote",
+      "list",
+      "bullet",
+      "indent",
+      "align",
+      "link",
+      "color",
+      "background",
+      "direction",
+      "image"
+    ];
+  }
+
   sendMagazine() {
-    const { faName, enName, magazines, image } = this.state;
+    const { faName, enName, body, magazines, image } = this.state;
     axios
-      .post("http://localhost:3000/api/magazine", {
+      .post("http://localhost:3001/magazine", {
         faName,
         enName,
+        body,
         image
       })
       .then(({ data }) => {
@@ -33,6 +90,7 @@ export default class News extends Component {
         return this.setState({
           faName: "",
           enName: "",
+          body: "",
           image: "",
           magazines: newMagazines
         });
@@ -42,7 +100,7 @@ export default class News extends Component {
   deleteMagazine(targetId) {
     const { magazines } = this.state;
     axios
-      .delete("http://localhost:3000/api/magazine", { data: { targetId } })
+      .delete("http://localhost:3001/magazine", { data: { targetId } })
       .then(({ data }) => {
         if (data == "no magazine") {
           return;
@@ -58,28 +116,46 @@ export default class News extends Component {
   enNameChangeHandler(e) {
     this.setState({ enName: e.target.value });
   }
+  bodyChangeHandler(value) {
+    this.setState({ body: value });
+  }
   imageChangeHandler(e) {
     this.setState({ image: e.target.value });
   }
   render() {
+    const ReactQuill = require("react-quill");
     return (
-      <div className="panel-news">
+      <div className="panel">
         <Container className="p-5 d-flex flex-column">
           <h2>افزودن مجله جدید</h2>
-          <input
-            type="text"
-            className="panel-editor my-2"
-            placeholder="نام انگلیسی"
-            onChange={this.enNameChangeHandler.bind(this)}
-            value={this.state.enName}
-          />
-          <textarea
-            type="text"
-            className="panel-editor my-2"
-            placeholder="نام فارسی"
-            onChange={this.faNameChangeHandler.bind(this)}
-            value={this.state.faName}
-          ></textarea>
+          <div className="d-flex justify-content-between">
+            <input
+              type="text"
+              className="panel-editor my-2 w-50 ml-2"
+              placeholder="نام فارسی"
+              onChange={this.faNameChangeHandler.bind(this)}
+              value={this.state.faName}
+            />
+            <input
+              type="text"
+              className="panel-editor my-2 w-50 mr-2"
+              placeholder="نام انگلیسی"
+              onChange={this.enNameChangeHandler.bind(this)}
+              value={this.state.enName}
+            />
+          </div>
+          <div id="editor">
+            <ReactQuill
+              theme="snow"
+              className="panel-editor text-right"
+              placeholder="متن مجله"
+              value={this.state.body}
+              modules={this.modules()}
+              style={{ direction: "ltr" }}
+              formats={this.formats()}
+              onChange={this.bodyChangeHandler}
+            />
+          </div>
           <Row className="my-3">
             <Col
               sm={2}
@@ -88,13 +164,19 @@ export default class News extends Component {
               <span>تصویر :</span>
             </Col>
             <Col sm={10}>
-              <input
-              type="text"
-                className="panel-editor w-100"
-                placeholder="لینک تصویر"
-                onChange={this.imageChangeHandler.bind(this)}
+              <select
+                className="w-100 panel-editor ltr"
                 value={this.state.image}
-              />
+                onChange={this.imageChangeHandler.bind(this)}
+              >
+                {this.state.images.map((item, index) => {
+                  return (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  );
+                })}
+              </select>
             </Col>
           </Row>
           <Button color="primary" onClick={this.sendMagazine.bind(this)}>
@@ -106,8 +188,8 @@ export default class News extends Component {
           <Table responsive bordered striped className="text-right">
             <thead>
               <tr>
-                <th width="40%">نام انگلیسی</th>
                 <th width="40%">نام فارسی</th>
+                <th width="40%">نام انگلیسی</th>
                 <th width="20%">عملیات</th>
               </tr>
             </thead>
@@ -115,8 +197,8 @@ export default class News extends Component {
               {this.state.magazines.map((item, index) => {
                 return (
                   <tr key={index}>
-                    <td>{item.enName}</td>
                     <td>{item.faName}</td>
+                    <td>{item.enName}</td>
                     <td>
                       <Button
                         color="danger"

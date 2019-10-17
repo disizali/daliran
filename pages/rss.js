@@ -7,14 +7,13 @@ import cheerio from "cheerio";
 
 export class Rss extends Component {
   static async getInitialProps(context) {
-    // At request level
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
+    console.log("got here")
     const { data } = await axios.get("https://www.cao.ir/news/organizatioal", {
       httpsAgent: agent
     });
-
     const $ = cheerio.load(data);
     const imageContents = $(
       'div[class="content2"] div[class="pic"] a img'

@@ -5,12 +5,8 @@ import axios from "axios";
 export default class News extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", body: "", image: "", news: [] };
+    this.state = { title: "", body: "", image: "", news: [], images: [] };
     this.bodyChangeHandler = this.bodyChangeHandler.bind(this);
-
-    this.toolbar = [
-      { size: ["small", false, "large", "huge"] }[{ header: [1, 2, false] }]
-    ];
   }
 
   modules() {
@@ -51,37 +47,37 @@ export default class News extends Component {
   }
 
   componentDidMount() {
-    const editor = document.querySelector("#editor p");
+    const editor = docuwment.querySelector("#editor p");
     editor.classList = [...editor.classList, "ql-align-right ql-direction-rtl"];
-    // .classList = ();
-    // axios.get("http://daliran.disizali.now.sh/api/news").then(({ data }) => {
-    //   this.setState({ news: data });
-    // });
+    axios.get("http://localhost:3001/news").then(({ data }) => {
+      this.setState({ news: data });
+    });
+    axios.get("http://localhost:3001/images").then(({ data: images }) => {
+      this.setState({ images, image: images[0] });
+    });
   }
 
   sendNews() {
-    alert(this.state.body);
-    // const { title, body, image, news } = this.state;
-
-    // axios
-    //   .post("http://localhost:3000/api/news", {
-    //     title,
-    //     body,
-    //     image
-    //   })
-    //   .then(({ data }) => {
-    //     if (data == "wrong data") {
-    //       return;
-    //     }
-    //     const newNews = [{ id: news.length + 1, title, body }, ...news];
-    //     return this.setState({ title: "", body: "", news: newNews });
-    //   });
+    const { title, body, image, news } = this.state;
+    axios
+      .post("http://localhost:3001/news", {
+        title,
+        body,
+        image
+      })
+      .then(({ data }) => {
+        if (data == "wrong data") {
+          return;
+        }
+        const newNews = [{ id: data.id, title, body }, ...news];
+        return this.setState({ title: "", body: "", news: newNews });
+      });
   }
 
   deleteNews(targetId) {
     const { news } = this.state;
     axios
-      .delete("http://localhost:3000/api/news", {
+      .delete("http://localhost:3001/news", {
         data: { targetId }
       })
       .then(({ data }) => {
@@ -105,7 +101,7 @@ export default class News extends Component {
   render() {
     const ReactQuill = require("react-quill"); // ES6
     return (
-      <div className="panel-news">
+      <div className="panel">
         <Container className="p-5 d-flex flex-column">
           <h2>افزودن خبر جدید</h2>
           <input
@@ -135,13 +131,19 @@ export default class News extends Component {
               <span>تصویر :</span>
             </Col>
             <Col sm={10}>
-              <input
-                type="text"
-                className="panel-editor w-100"
-                placeholder="لینک تصویر"
-                onChange={this.imageChangeHandler.bind(this)}
+              <select
+                className="w-100 panel-editor ltr"
                 value={this.state.image}
-              />
+                onChange={this.imageChangeHandler.bind(this)}
+              >
+                {this.state.images.map((item, index) => {
+                  return (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  );
+                })}
+              </select>
             </Col>
           </Row>
           <Button color="primary" onClick={this.sendNews.bind(this)}>

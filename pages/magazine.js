@@ -3,16 +3,14 @@ import Layout from "../components/Layout";
 import axios from "axios";
 
 import { Container, Row, Col } from "reactstrap";
+import Link from "next/link";
 
 class Magazine extends React.Component {
   static async getInitialProps(context) {
-    let host ="http://localhost:3000"
-      // context.req != undefined
-        // ? `http://${context.req.headers.host}`
-        // : `${window.location.origin}`;
-    // host = host == undefined && "localhost:3000";
-    const { data } = await axios.get(`${host}/api/magazine`);
-    return { data };
+    const { data: magazine } = await axios.get(
+      `http://localhost:3001/magazine`
+    );
+    return { magazine };
   }
 
   constructor(props) {
@@ -26,22 +24,20 @@ class Magazine extends React.Component {
         <div className="magazine">
           <Container>
             <Row className="pb-2">
-              {this.props.data.map((item, index) => {
+              {this.props.magazine.map((item, index) => {
                 let magazineItem = (
                   <Col sm="12" md="4" key={index}>
                     <div className="magazine-item shadow rounded">
                       <div className="magazine-content">
                         <img
-                          src={`/static/images/${item.image}`}
+                          src={`/static/uploads/images/${item.image}`}
                           className="magazine-item-image"
                         />
-                        <a
-                          // href={`/magazine/${item.name}`}
-                          href={`#`}
-                          className="magazine-item-link"
-                        >
-                          <i className="fas fa-search"></i>
-                        </a>
+                        <Link href={`magazine/${item.enName}`}>
+                          <a className="magazine-item-link">
+                            <i className="fas fa-search"></i>
+                          </a>
+                        </Link>
                       </div>
                       <h3 className="text-right text-muted">{item.faName}</h3>
                     </div>
