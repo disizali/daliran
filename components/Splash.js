@@ -20,7 +20,7 @@ export default class Splash extends React.Component {
           className="position-absolute splash-cover-sky"
           width="100%"
         />
-        <Container>
+        {/* <Container>
           <div className="slogan">
             <span className="slogan-top">
               BEST&nbsp;&nbsp;EXPERIENCE&nbsp;&nbsp;
@@ -28,7 +28,7 @@ export default class Splash extends React.Component {
             <br />
             <span className="slogan-bottom">FLY&nbsp;&nbsp;BETTER</span>
           </div>
-        </Container>
+        </Container> */}
       </section>
     );
   }

@@ -6,11 +6,13 @@ import Navbar from "./Navbar";
 import Pages from "./Pages";
 import Images from "./Images";
 import Data from "./Data";
+import Employment from "./Employment";
+import Slides from "./Slides";
 
 export default class Panel extends Component {
   constructor(props) {
     super(props);
-    this.state = { panel: 6 };
+    this.state = { panel: 8 };
   }
   getPanel() {
     const { panel } = this.state;
@@ -27,6 +29,10 @@ export default class Panel extends Component {
         return <Images />;
       case 6:
         return <Data />;
+      case 7:
+        return <Employment />;
+      case 8:
+        return <Slides />;
     }
   }
   changePanel(panel) {
@@ -102,6 +108,24 @@ export default class Panel extends Component {
                 <div>
                   <i className="fa fa-file-alt"></i>
                   <span>متن ها</span>
+                </div>
+              </li>
+              <li
+                className={`w-100 h-100 ${panel == 7 && "active"}`}
+                onClick={() => this.changePanel(7)}
+              >
+                <div>
+                  <i className="fa fa-users"></i>
+                  <span>همکاری</span>
+                </div>
+              </li>
+              <li
+                className={`w-100 h-100 ${panel == 8 && "active"}`}
+                onClick={() => this.changePanel(8)}
+              >
+                <div>
+                  <i className="fa fa-grip-horizontal"></i>
+                  <span>اسلایدر</span>
                 </div>
               </li>
             </ul>

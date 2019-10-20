@@ -1,5 +1,5 @@
 import React from "react";
-import { FormGroup, Label, Input, Col, Table , Button} from "reactstrap";
+import { FormGroup, Label, Input, Col, Table, Button } from "reactstrap";
 
 export default class Educational extends React.Component {
   constructor(props) {
@@ -81,7 +81,12 @@ export default class Educational extends React.Component {
           <tbody>
             <tr>
               <td>
-                <Input type="text" className="form-control" />
+                <Input
+                  type="text"
+                  className="form-control"
+                  name="edoucational-last-degere"
+                  onChange={this.props.handleTextChanges}
+                />
               </td>
               <td>
                 <Input type="text" className="form-control" />

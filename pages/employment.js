@@ -14,16 +14,21 @@ import Confirm from "../components/Employment/Confirm";
 export default class Employment extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { level: 1, information: { userName: "", userFamily: "" } };
+    this.state = { level: 1 };
   }
+
+  handleTextChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   getForm(level, goToLevel) {
     switch (level) {
       case 1:
         return (
           <Personal
             goToLevel={goToLevel}
-            information={this.state.information}
-            handleChanges={this.handleChanges.bind(this)}
+            information={this.state}
+            handleTextChanges={this.handleTextChange.bind(this)}
           />
         );
       case 2:
@@ -31,6 +36,7 @@ export default class Employment extends React.Component {
           <Educational
             goToLevel={goToLevel}
             information={this.state.information}
+            handleTextChanges={this.handleTextChange.bind(this)}
           />
         );
       case 3:
@@ -74,7 +80,7 @@ export default class Employment extends React.Component {
         );
       case 9:
         return (
-          <Confirm goToLevel={goToLevel} information={this.state.information} />
+          <Confirm goToLevel={goToLevel} information={this.state} />
         );
     }
   }

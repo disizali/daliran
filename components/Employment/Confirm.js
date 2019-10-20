@@ -10,7 +10,7 @@ export default class Confirm extends React.Component {
     this.setState({ checked: e.target.checked });
   }
   render() {
-    const {goToLevel} = this.props
+    const { goToLevel } = this.props;
     const { userName, userFamily } = this.props.information;
     return (
       <section className="confirm rtl text-right">

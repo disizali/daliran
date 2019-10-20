@@ -13,10 +13,10 @@ export default class Personal extends React.Component {
           <Col sm={3}>
             <input
               type="text"
-              name="user-name"
+              name="userName"
               id="user-name"
-              onChange={this.props.handleChanges}
-              value={information.userName}
+              value={this.props.information.userName || ""}
+              onChange={this.props.handleTextChanges}
               className="form-control text-right"
               placeholder="نام"
             />
@@ -24,10 +24,9 @@ export default class Personal extends React.Component {
           <Col sm={3}>
             <input
               type="text"
-              name="user-family"
-              id="user-family"
-              value={information.userFamily}
-              onChange={this.props.handleChanges}
+              name="userFamily"
+              value={this.props.information.userFamily || ""}
+              onChange={this.props.handleTextChanges}
               className="form-control text-right"
               placeholder="نام خانوادگی"
             />
@@ -37,15 +36,17 @@ export default class Personal extends React.Component {
               type="text"
               name="user-father"
               className="form-control text-right"
+              onChange={this.props.handleTextChanges}
               placeholder="نام پدر"
             />
           </Col>
           <Col sm={3}>
             <input
               type="text"
-              name="user-father"
+              name="user-religion"
               className="form-control text-right"
               placeholder="دین"
+              onChange={this.props.handleTextChanges}
             />
           </Col>
         </Row>
@@ -54,33 +55,37 @@ export default class Personal extends React.Component {
           <Col sm={3}>
             <input
               type="text"
-              name="user-family"
+              name="user-certificate-id"
               className="form-control text-right"
               placeholder="شماره شناسنامه"
+              onChange={this.props.handleTextChanges}
             />
           </Col>
           <Col sm={3}>
             <input
               type="text"
-              name="user-family"
+              name="user-certificate-serial"
               className="form-control text-right"
               placeholder="سریال شناسنامه"
+              onChange={this.props.handleTextChanges}
             />
           </Col>
           <Col sm={3}>
             <input
               type="text"
-              name="user-family"
+              name="user-national-code"
               className="form-control text-right"
               placeholder="کد ملی"
+              onChange={this.props.handleTextChanges}
             />
           </Col>
           <Col sm={3}>
             <input
               type="text"
-              name="user-family"
+              name="user-passport-number"
               className="form-control text-right"
               placeholder="شماره پاسپورت"
+              onChange={this.props.handleTextChanges}
             />
           </Col>
         </Row>
@@ -89,9 +94,10 @@ export default class Personal extends React.Component {
           <Col sm={3}>
             <input
               type="text"
-              name="user-family"
+              name="user-birthplace"
               className="form-control text-right"
               placeholder="محل تولد"
+              onChange={this.props.handleTextChanges}
             />
           </Col>
           <Col sm={6}>
@@ -102,10 +108,10 @@ export default class Personal extends React.Component {
               <Col>
                 <input
                   type="number"
-                  name="user-birthdate"
-                  id="user-birthdate"
+                  name="user-birth-day"
                   min="1"
                   max="31"
+                  onChange={this.props.handleTextChanges}
                   className="form-control text-right"
                   placeholder="01"
                 />
@@ -113,9 +119,10 @@ export default class Personal extends React.Component {
               <Col>
                 <input
                   type="number"
-                  name="user-family"
+                  name="user-birth-month"
                   min="1"
                   max="12"
+                  onChange={this.props.handleTextChanges}
                   className="form-control text-right"
                   placeholder="01"
                 />
@@ -123,9 +130,10 @@ export default class Personal extends React.Component {
               <Col>
                 <input
                   type="number"
-                  name="user-family"
+                  name="user-birth-year"
                   min="00"
                   max="98"
+                  onChange={this.props.handleTextChanges}
                   className="form-control text-right w-100"
                   placeholder="98"
                 />
@@ -135,9 +143,10 @@ export default class Personal extends React.Component {
           <Col sm={3}>
             <input
               type="text"
-              name="user-family"
+              name="user-nationality"
               className="form-control text-right"
               placeholder="تابعیت"
+              onChange={this.props.handleTextChanges}
             />
           </Col>
         </Row>

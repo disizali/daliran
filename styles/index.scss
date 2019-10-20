@@ -2,9 +2,12 @@
 @import "~video-react/styles/scss/video-react";
 @import "~react-quill/dist/quill.core.css";
 @import "~react-quill/dist/quill.snow.css";
+$slick-font-path: "~slick-carousel/slick/fonts/";
+$slick-loader-path: "~slick-carousel/slick/";
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
 
 @import "fonts";
-
 $mainColor: #1e3964;
 $accentColor: #cea158;
 @import "navbar";
@@ -20,6 +23,8 @@ $accentColor: #cea158;
 @import "employment/index";
 @import "contact";
 @import "quill";
+@import "parallax";
+@import "slider";
 
 .layout {
   overflow-x: hidden;
@@ -51,4 +56,3 @@ body {
 a {
   text-decoration: none;
 }
-

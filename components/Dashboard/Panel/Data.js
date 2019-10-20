@@ -40,6 +40,7 @@ export class Datas extends Component {
     return (
       <div>
         <Container className="panel p-5 d-flex flex-column">
+          <h2>متن ها</h2>
           <Table responsive bordered striped className="text-right">
             <thead>
               <tr>
